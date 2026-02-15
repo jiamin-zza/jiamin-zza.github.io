@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ng Jia Min - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,284 +12,808 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #ffffff;
-            line-height: 1.6;
+        :root {
+            --primary: #00ff88;
+            --secondary: #0a0e27;
+            --accent: #667eea;
+            --text: #ffffff;
+            --text-dim: #a8b2d1;
+            --card-bg: #151a2e;
         }
 
-        .container {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        nav .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: rgba(0, 0, 0, 0.3);
-            margin-bottom: 50px;
-            border-radius: 10px;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            margin-bottom: 20px;
-            color: #00d4ff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero .subtitle {
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 1.5em;
-            color: #a8dadc;
-            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        .hero .tagline {
-            font-size: 1.2em;
-            color: #f1faee;
-            opacity: 0.9;
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            color: #00d4ff;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #00d4ff;
-            padding-bottom: 10px;
-        }
-
-        .about-content {
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-
-        .about-content p {
-            margin-bottom: 15px;
-        }
-
-        .project {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            border-left: 5px solid #00d4ff;
-        }
-
-        .project h3 {
-            font-size: 2em;
-            color: #00d4ff;
-            margin-bottom: 15px;
-        }
-
-        .project-section {
-            margin: 20px 0;
-        }
-
-        .project-section h4 {
-            color: #a8dadc;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-
-        .project ul {
+        .nav-menu {
+            display: flex;
+            gap: 40px;
             list-style: none;
-            padding-left: 20px;
         }
 
-        .project li {
-            margin-bottom: 10px;
-            padding-left: 20px;
+        .nav-menu a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.3s;
             position: relative;
         }
 
-        .project li::before {
-            content: "●";
-            color: #00d4ff;
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
             position: absolute;
+            bottom: -5px;
             left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* HOME SECTION */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(102, 126, 234, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .home-tag {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .home-content h1 {
+            font-size: 5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .home-content h2 {
+            font-size: 2em;
+            color: var(--text);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .home-content p {
+            font-size: 1.2em;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            padding-top: 120px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2em;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent) 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+        }
+
+        .about-text h3 {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .info-text strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .info-text span {
+            color: var(--text-dim);
+            font-size: 0.95em;
+        }
+
+        /* PROJECTS SECTION */
+        #projects {
+            padding-top: 120px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.1);
+        }
+
+        .project-header {
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .project-title {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .project-icon {
+            font-size: 1.3em;
+        }
+
+        .project-desc {
+            font-size: 1.15em;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        .project-body {
+            padding: 40px;
+        }
+
+        .project-section {
+            margin-bottom: 35px;
+        }
+
+        .project-section h4 {
+            font-size: 1.3em;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-section h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .project-section p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .project-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-section li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            color: var(--text-dim);
+            line-height: 1.7;
+            border-left: 2px solid rgba(0, 255, 136, 0.2);
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .project-section li::before {
+            content: '▸';
+            position: absolute;
+            left: -12px;
+            color: var(--primary);
+            font-weight: bold;
         }
 
         .tech-tags {
-            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .tech-tag {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.2);
-            padding: 5px 15px;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 8px 18px;
             border-radius: 20px;
-            margin: 5px 5px 5px 0;
             font-size: 0.9em;
-            border: 1px solid #00d4ff;
+            font-weight: 500;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* WHAT I DO / SKILLS SECTION */
+        .what-i-do {
+            margin-top: 80px;
+            padding-top: 80px;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        .skill-category {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
+        .skill-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s;
         }
 
-        .skill-category h3 {
-            color: #00d4ff;
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5em;
             margin-bottom: 15px;
-            font-size: 1.3em;
+            color: var(--primary);
         }
 
-        .skill-category p {
-            line-height: 1.8;
+        .skill-card p {
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: rgba(0, 255, 136, 0.05);
+            color: var(--text);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            border: 1px solid rgba(0, 255, 136, 0.15);
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            padding-top: 120px;
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
-        .contact-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 10px;
+        .contact-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
             text-align: center;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            transition: transform 0.3s;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s;
         }
 
-        .contact-item:hover {
+        .contact-card:hover {
+            border-color: var(--primary);
             transform: translateY(-5px);
-            border-color: #00d4ff;
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.1);
         }
 
-        .contact-item a {
-            color: #ffffff;
-            text-decoration: none;
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .contact-label {
             font-size: 1.1em;
-        }
-
-        .contact-item .icon {
-            font-size: 2em;
+            color: var(--text);
+            font-weight: 600;
             margin-bottom: 10px;
-            color: #00d4ff;
         }
 
+        .contact-card a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        footer p {
+            color: var(--text-dim);
+            font-size: 0.95em;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                transition: left 0.3s;
+                border-top: 1px solid rgba(0, 255, 136, 0.1);
             }
-            .hero .subtitle {
-                font-size: 1.2em;
+
+            .nav-menu.active {
+                left: 0;
             }
-            .section {
-                padding: 20px;
+
+            .mobile-toggle {
+                display: flex;
             }
+
+            .home-content h1 {
+                font-size: 3em;
+            }
+
+            .home-content h2 {
+                font-size: 1.5em;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
             .section-title {
                 font-size: 2em;
             }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #a8dadc;
-            font-size: 0.9em;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>NG JIA MIN</h1>
-            <div class="subtitle">Business & Financial Technology Student</div>
-            <div class="tagline">Python Developer | Flask | Web Development </div>
+    <nav>
+        <div class="container">
+            <div class="logo">&lt;JM /&gt;</div>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <div class="section">
-            <h2 class="section-title">ABOUT ME</h2>
-            <div class="about-content">
-                <p>I am a Diploma in Business & Financial Technology student at Nanyang Polytechnic, passionate about building web applications that solve real-world problems.</p>
-                
-                <p>I specialize in Python Flask development and have a keen interest in fintech and payment systems. Currently maintaining a GPA of 3.34 and actively working on projects that bridge technology with business needs.</p>
-                
-                <p><strong>🎓 Key Coursework:</strong> Web Development (IT1x25), UX Design (IT1x15), Financial Technology Fundamentals, Database Management, Object-Oriented Programming</p>
+    <!-- HOME SECTION -->
+    <section id="home">
+        <div class="home-content fade-in">
+            <div class="home-tag">💼 Open to Internship Opportunities</div>
+            <h1>NG JIA MIN</h1>
+            <h2>Flask Developer & Fintech Enthusiast</h2>
+            <p>Passionate about building web applications that solve real-world problems. Currently pursuing Business & Financial Technology at Nanyang Polytechnic with a focus on full-stack development.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2 class="section-title">MY PROJECTS</h2>
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="section-header">
+            <div class="section-tag">Get To Know Me</div>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">A problem-solver who turns complex challenges into elegant digital solutions</p>
+        </div>
 
-            <div class="project">
-                <h3>🌐 ConnectGen - Intergenerational Web Platform</h3>
+        <div class="about-grid">
+            <div class="about-image">
+                👩‍💻
+            </div>
+            <div class="about-text">
+                <h3>Hello! I'm Jia Min</h3>
+                <p>I'm a Diploma in Business & Financial Technology student at Nanyang Polytechnic, passionate about bridging the gap between technology and real-world business solutions.</p>
                 
+                <p>My journey in tech started with curiosity about how applications work, and it's evolved into a passion for creating meaningful digital experiences. I specialize in full-stack web development with Python Flask and have a particular interest in fintech applications.</p>
+                
+                <p>When I'm not coding, I'm exploring new technologies, learning about financial systems, or working on projects that can make a positive impact in my community.</p>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">🎓</div>
+                        <div class="info-text">
+                            <strong>Education</strong>
+                            <span>Nanyang Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📊</div>
+                        <div class="info-text">
+                            <strong>GPA</strong>
+                            <span>3.34</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">💻</div>
+                        <div class="info-text">
+                            <strong>Focus</strong>
+                            <span>Web Development</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🚀</div>
+                        <div class="info-text">
+                            <strong>Status</strong>
+                            <span>Available for Internship</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="section-header">
+            <div class="section-tag">What I've Built</div>
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">Real solutions to real problems, powered by code</p>
+        </div>
+
+        <!-- ConnectGen Project -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3 class="project-title">
+                    <span class="project-icon">🌐</span>
+                    ConnectGen - Intergenerational Platform
+                </h3>
+                <p class="project-desc">A full-stack web platform bridging generations through digital storytelling, real-time messaging, and community discussions.</p>
+            </div>
+            <div class="project-body">
                 <div class="project-section">
                     <h4>The Challenge</h4>
-                    <p>In Singapore's fast-paced society, meaningful interaction between youth and seniors has declined significantly. Seniors often feel isolated, while younger generations miss out on valuable wisdom and cultural heritage.</p>
+                    <p>Singapore's fast-paced society has created a significant gap between youth and seniors. Seniors face social isolation while younger generations miss out on valuable wisdom and cultural heritage. Traditional community programs struggle with accessibility and consistent engagement.</p>
                 </div>
 
                 <div class="project-section">
                     <h4>My Solution</h4>
-                    <p>I developed ConnectGen, a full-stack web platform that creates meaningful digital bridges between generations through storytelling, real-time messaging, and collaborative discussions.</p>
-                </div>
-
-                <div class="project-section">
-                    <h4>Key Features I Built</h4>
-                    <ul>
-                        <li><strong>Secure Authentication:</strong> Built dual-profile registration and login with password hashing and session management</li>
-                        <li><strong>Real-Time Messaging:</strong> Created one-on-one chat functionality with message threading</li>
-                        <li><strong>Discussion Board:</strong> Developed category-based forum with full CRUD operations</li>
-                        <li><strong>Accessible Design:</strong> Senior-friendly UI with large fonts and high-contrast colors</li>
-                    </ul>
-                </div>
-
-                <div class="project-section">
-                    <h4>Results & Impact</h4>
-                    <ul>
-                        <li>95% user satisfaction rating from 20 test participants</li>
-                        <li>Reduced social isolation among senior testers</li>
-                        <li>Zero security incidents during testing</li>
-                    </ul>
-                </div>
-
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">Bootstrap 5</span>
-                    <span class="tech-tag">SQLite</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <h3>📱 CCA Discovery Website</h3>
-                
-                <div class="project-section">
-                    <h4>Overview</h4>
-                    <p>Interactive website showcasing co-curricular activities at Nanyang Polytechnic to help students discover clubs that match their interests.</p>
+                    <p>I developed ConnectGen as a comprehensive digital platform designed to foster meaningful connections between generations through an accessible, engaging interface.</p>
                 </div>
 
                 <div class="project-section">
                     <h4>Key Features</h4>
                     <ul>
-                        <li>Responsive design across all devices</li>
-                        <li>Category-based navigation</li>
-                        <li>Interactive image galleries</li>
+                        <li><strong>Secure Authentication:</strong> Built dual-profile system with password hashing, session management, and role-based access control</li>
+                        <li><strong>Real-Time Messaging:</strong> Implemented one-on-one chat with message threading and conversation history</li>
+                        <li><strong>Discussion Forum:</strong> Created community board with category filtering, posts, comments, and CRUD operations</li>
+                        <li><strong>Accessible Design:</strong> Senior-friendly UI with large fonts, high contrast, and simplified navigation</li>
+                        <li><strong>Story Sharing:</strong> Platform for seniors to share life experiences and wisdom with youth</li>
+                    </ul>
+                </div>
+
+                <div class="project-section">
+                    <h4>Impact</h4>
+                    <p><strong>95% user satisfaction</strong> from 20 participants • <strong>100+ messages</strong> exchanged during testing • <strong>Zero security incidents</strong> • Reduced social isolation among senior testers</p>
+                </div>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">Bootstrap 5</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">HTML/CSS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CCA Discovery Project -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3 class="project-title">
+                    <span class="project-icon">📱</span>
+                    CCA Discovery Website
+                </h3>
+                <p class="project-desc">An interactive showcase helping Nanyang Polytechnic students discover co-curricular activities that match their interests.</p>
+            </div>
+            <div class="project-body">
+                <div class="project-section">
+                    <h4>The Problem</h4>
+                    <p>Students faced information overload when choosing CCAs. Static notice boards and PDF documents made it difficult to understand what each club offered, leading to poor engagement.</p>
+                </div>
+
+                <div class="project-section">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li><strong>Category Navigation:</strong> Organized CCAs by type with intuitive filtering system</li>
+                        <li><strong>Interactive Galleries:</strong> Built responsive image carousels showcasing club activities</li>
+                        <li><strong>Detailed Profiles:</strong> Complete information for each CCA including meeting times and requirements</li>
+                        <li><strong>Mobile-First Design:</strong> Fully responsive layout optimized for all devices</li>
+                        <li><strong>Quick Access:</strong> Easy links to registration forms and contact channels</li>
                     </ul>
                 </div>
 
@@ -296,50 +821,191 @@
                     <span class="tech-tag">HTML5</span>
                     <span class="tech-tag">CSS3</span>
                     <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Responsive Design</span>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">TECHNICAL SKILLS</h2>
+        <!-- What I Do Section -->
+        <div class="what-i-do">
+            <div class="section-header">
+                <div class="section-tag">My Expertise</div>
+                <h2 class="section-title">What I Do</h2>
+                <p class="section-subtitle">Core skills and technologies I work with</p>
+            </div>
+
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <p>Python, JavaScript, HTML5, CSS3, SQL</p>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend Development</h3>
+                    <p>Building robust server-side applications with Python Flask, implementing RESTful APIs, authentication systems, and database management.</p>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Flask</span>
+                        <span class="skill-item">REST APIs</span>
+                        <span class="skill-item">SQLite</span>
+                        <span class="skill-item">Authentication</span>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Frameworks & Tools</h3>
-                    <p>Flask, Bootstrap 5, Git, GitHub, VS Code, SQLite</p>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Frontend Development</h3>
+                    <p>Creating responsive, user-friendly interfaces with modern web technologies and design principles focused on accessibility.</p>
+                    <div class="skill-list">
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">CSS3</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">Bootstrap</span>
+                        <span class="skill-item">Responsive Design</span>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Core Competencies</h3>
-                    <p>Web Development, Database Design, RESTful APIs, Responsive Design, Agile Methodology</p>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Database Design</h3>
+                    <p>Designing and implementing efficient database structures, writing optimized queries, and managing data relationships.</p>
+                    <div class="skill-list">
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Database Design</span>
+                        <span class="skill-item">Data Modeling</span>
+                        <span class="skill-item">Query Optimization</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">💼</div>
+                    <h3>Fintech & Business</h3>
+                    <p>Understanding financial technology systems, payment processing, and applying business analysis to technical solutions.</p>
+                    <div class="skill-list">
+                        <span class="skill-item">Fintech Basics</span>
+                        <span class="skill-item">Payment Systems</span>
+                        <span class="skill-item">Business Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h3>Development Tools</h3>
+                    <p>Proficient with modern development tools and version control for efficient collaboration and code management.</p>
+                    <div class="skill-list">
+                        <span class="skill-item">Git & GitHub</span>
+                        <span class="skill-item">VS Code</span>
+                        <span class="skill-item">Debugging</span>
+                        <span class="skill-item">Testing</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">👥</div>
+                    <h3>Soft Skills</h3>
+                    <p>Strong communication, problem-solving abilities, and collaborative mindset for successful project delivery.</p>
+                    <div class="skill-list">
+                        <span class="skill-item">Problem Solving</span>
+                        <span class="skill-item">Team Work</span>
+                        <span class="skill-item">Agile Methods</span>
+                        <span class="skill-item">Communication</span>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-tag">Let's Connect</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">I'm always open to discussing projects, opportunities, or just having a chat about technology!</p>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">GET IN TOUCH</h2>
-            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">I'm always open to discussing projects, opportunities, or collaboration!</p>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="icon">📧</div>
-                    <a href="mailto:ngjiaimn0904@gmail.com">ngjiaimn0904@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <div class="icon">📱</div>
-                    <a href="tel:+6597948355">(+65) 9794 8355</a>
-                </div>
-                <div class="contact-item">
-                    <div class="icon">🔗</div>
-                    <a href="https://linkedin.com/in/jia-min-ng-913b813b0" target="_blank">LinkedIn Profile</a>
-                </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">Email</div>
+                <a href="mailto:ngjiaimn0904@gmail.com">ngjiaimn0904@gmail.com</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">Phone</div>
+                <a href="tel:+6597948355">(+65) 9794 8355</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <div class="contact-label">LinkedIn</div>
+                <a href="https://linkedin.com/in/jia-min-ng-913b813b0" target="_blank">Connect with me</a>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Ng Jia Min | Built with code</p>
+        <p>&copy; 2026 Ng Jia Min | Designed & Built with passion | Last updated: February 2026</p>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .skill-card, .contact-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
