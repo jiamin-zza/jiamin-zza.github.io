@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jia Min Ng | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,7 +25,7 @@
         nav {
             background: #ffffff;
             padding: 20px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -258,13 +261,19 @@
             overflow: hidden;
             border: 1px solid #d0d7de;
             background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .screenshot-container img {
             width: 100%;
             height: auto;
             display: block;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .screenshot-container img:hover {
+            opacity: 0.85;
         }
 
         .screenshot-caption {
@@ -273,6 +282,40 @@
             color: #586069;
             text-align: center;
             background: white;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 6px;
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5em;
+            cursor: pointer;
+            line-height: 1;
         }
 
         /* Collapsible Code Feature Styles */
@@ -580,6 +623,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="container">
@@ -592,13 +636,13 @@
             </ul>
         </div>
     </nav>
-
     <section id="home">
         <div class="container">
             <div class="hero-content">
                 <h1>Hi, I'm Ng Jia Min</h1>
                 <p class="subtitle">Business & Financial Technology Student</p>
-                <p>Business & Fintech student skilled in Python Flask, database management, and web development. Focused on building secure, user-centered applications for the fintech industry.</p>
+                <p>Business & Fintech student skilled in Python Flask, database management, and web development. Focused
+                    on building secure, user-centered applications for the fintech industry.</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary">View My Projects</a>
                     <a href="#contact" class="btn btn-outline">Get In Touch</a>
@@ -606,7 +650,6 @@
             </div>
         </div>
     </section>
-
     <section id="about">
         <div class="container">
             <div class="section-header">
@@ -614,16 +657,19 @@
                 <h2 class="section-title">About</h2>
                 <p class="section-subtitle">Learning and building web projects</p>
             </div>
-
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm currently studying Business & Financial Technology at Nanyang Polytechnic. My interest in web development started when I wanted to understand how applications are built and how they can solve real problems.</p>
-                    
-                    <p>Through my coursework, I've been learning Python Flask for backend development, working with databases, and creating user interfaces. I've completed several projects including a platform connecting different generations and a CCA discovery website for students.</p>
-                    
-                    <p>I'm particularly interested in fintech applications and how technology can improve business processes. I'm committed to improving my skills and taking on new challenges.</p>
-                </div>
+                    <p>I'm currently studying Business & Financial Technology at Nanyang Polytechnic. My interest in web
+                        development started when I wanted to understand how applications are built and how they can
+                        solve real problems.</p>
 
+                    <p>Through my coursework, I've been learning Python Flask for backend development, working with
+                        databases, and creating user interfaces. I've completed several projects including a platform
+                        connecting different generations and a CCA discovery website for students.</p>
+
+                    <p>I'm particularly interested in fintech applications and how technology can improve business
+                        processes. I'm committed to improving my skills and taking on new challenges.</p>
+                </div>
                 <div class="info-grid">
                     <div class="info-card">
                         <div class="info-label">School</div>
@@ -637,20 +683,19 @@
             </div>
         </div>
     </section>
-
     <section id="projects">
         <div class="container">
             <div class="section-header">
                 <div class="section-tag">My Work</div>
                 <h2 class="section-title">Projects</h2>
             </div>
-
             <div class="project">
                 <h3 class="project-title">Bondify</h3>
                 <p class="project-meta">Full-stack web application • School project</p>
-
                 <h4>Overview</h4>
-                <p>Built a web platform that connects youth and seniors in Singapore through digital storytelling and messaging. The goal was to address social isolation among seniors while facilitating meaningful intergenerational connections.</p>
+                <p>Built a web platform that connects youth and seniors in Singapore through digital storytelling and
+                    messaging. The goal was to address social isolation among seniors while facilitating meaningful
+                    intergenerational connections.</p>
 
                 <div class="project-screenshots">
                     <div class="screenshot-container">
@@ -675,10 +720,10 @@
                     <li>Accessible interface designed with larger fonts and simplified navigation for seniors</li>
                     <li>Database schema managing users, messages, posts, and relationships</li>
                 </ul>
-
                 <h4>Key Technical Implementations</h4>
-                <p style="color: #586069; font-size: 0.95em; margin-bottom: 20px;">Click on each section below to view the code</p>
-                
+                <p style="color: #586069; font-size: 0.95em; margin-bottom: 20px;">Click on each section below to view
+                    the code</p>
+
                 <div class="code-features">
                     <div class="code-feature">
                         <div class="code-feature-header" onclick="toggleCode(this)">
@@ -690,11 +735,10 @@
                         </div>
                         <div class="code-snippet-wrapper">
                             <div class="code-snippet">
-<code><span class="code-comment"># User signup route with email/phone validation</span>
+                                <code><span class="code-comment"># User signup route with email/phone validation</span>
 <span class="code-decorator">@app.route</span>(<span class="code-string">"/signup"</span>, methods=[<span class="code-string">"GET"</span>, <span class="code-string">"POST"</span>])
 <span class="code-keyword">def</span> <span class="code-function">signup</span>():
     form = SignUpForm(request.form)
-
     <span class="code-keyword">if</span> request.method == <span class="code-string">"POST"</span> <span class="code-keyword">and</span> form.validate():
         <span class="code-keyword">try</span>:
             <span class="code-comment"># Check if email already exists</span>
@@ -714,7 +758,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="code-feature">
                         <div class="code-feature-header" onclick="toggleCode(this)">
                             <div class="code-feature-left">
@@ -725,7 +768,7 @@
                         </div>
                         <div class="code-snippet-wrapper">
                             <div class="code-snippet">
-<code><span class="code-comment"># Chat route handling message sending with image support</span>
+                                <code><span class="code-comment"># Chat route handling message sending with image support</span>
 <span class="code-decorator">@app.route</span>(<span class="code-string">"/chat/&lt;int:other_id&gt;"</span>, methods=[<span class="code-string">"GET"</span>, <span class="code-string">"POST"</span>])
 <span class="code-keyword">def</span> <span class="code-function">chat</span>(other_id):
     me = current_user()
@@ -754,7 +797,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="code-feature">
                         <div class="code-feature-header" onclick="toggleCode(this)">
                             <div class="code-feature-left">
@@ -765,7 +807,7 @@
                         </div>
                         <div class="code-snippet-wrapper">
                             <div class="code-snippet">
-<code><span class="code-comment"># Discussion rooms page with member filtering</span>
+                                <code><span class="code-comment"># Discussion rooms page with member filtering</span>
 <span class="code-decorator">@app.route</span>(<span class="code-string">"/discussion"</span>)
 <span class="code-keyword">def</span> <span class="code-function">discussion_rooms</span>():
     me = current_user()
@@ -789,7 +831,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="code-feature">
                         <div class="code-feature-header" onclick="toggleCode(this)">
                             <div class="code-feature-left">
@@ -800,7 +841,7 @@
                         </div>
                         <div class="code-snippet-wrapper">
                             <div class="code-snippet">
-<code><span class="code-comment"># Search users with keyword filtering</span>
+                                <code><span class="code-comment"># Search users with keyword filtering</span>
 <span class="code-decorator">@app.route</span>(<span class="code-string">"/users"</span>)
 <span class="code-keyword">def</span> <span class="code-function">users</span>():
     me = current_user()
@@ -808,7 +849,6 @@
     
     <span class="code-comment"># Search users excluding current user</span>
     people = db_helper.list_users(exclude_user_id=me.get_user_id(), keyword=q)
-
     <span class="code-keyword">return</span> render_template(
         <span class="code-string">"user.html"</span>,
         user=me,
@@ -816,7 +856,6 @@
         q=q,
         db_helper=db_helper
     )
-
 <span class="code-comment"># Follow/unfollow functionality</span>
 <span class="code-decorator">@app.route</span>(<span class="code-string">"/follow/&lt;int:user_id&gt;"</span>, methods=[<span class="code-string">"POST"</span>])
 <span class="code-keyword">def</span> <span class="code-function">follow</span>(user_id):
@@ -827,10 +866,11 @@
                         </div>
                     </div>
                 </div>
-
                 <h4>Technical Challenges</h4>
-                <p>This was my first full-stack project. The main challenges were implementing secure authentication, designing an accessible UI for seniors, and managing the database relationships between users, messages, and forum posts. I learned to structure my Flask routes efficiently, handle file uploads securely, and implement proper session management for user authentication.</p>
-
+                <p>This was my first full-stack project. The main challenges were implementing secure authentication,
+                    designing an accessible UI for seniors, and managing the database relationships between users,
+                    messages, and forum posts. I learned to structure my Flask routes efficiently, handle file uploads
+                    securely, and implement proper session management for user authentication.</p>
                 <div class="tech-stack">
                     <span class="tech-badge">Python</span>
                     <span class="tech-badge">Flask</span>
@@ -842,36 +882,35 @@
                     <span class="tech-badge">Jinja2</span>
                 </div>
             </div>
-
             <div class="project">
                 <h3 class="project-title">CCA Club Website</h3>
                 <p class="project-meta">School assignment • Club showcase</p>
-
                 <h4>Project Brief</h4>
-                <p>Created a website for a CCA club as part of a web development assignment. The goal was to showcase the club's information and activities in an organized and engaging way.</p>
+                <p>Created a website for a CCA club as part of a web development assignment. The goal was to showcase
+                    the club's information and activities in an organized and engaging way.</p>
+                <div class="project-screenshots">
+                    <div class="screenshot-container">
+                        <img src="home.png" alt="Home Page" onclick="openLightbox(this.src, this.alt)">
+                        <div class="screenshot-caption">Home Page</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="gallery.png" alt="Photo Gallery" onclick="openLightbox(this.src, this.alt)">
+                        <div class="screenshot-caption">Photo Gallery</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="about.png" alt="About Page" onclick="openLightbox(this.src, this.alt)">
+                        <div class="screenshot-caption">About Page</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="join.png" alt="Join Us Form" onclick="openLightbox(this.src, this.alt)">
+                        <div class="screenshot-caption">Join Us Form</div>
+                    </div>
+                </div>
 
-            <div class="project-screenshots">
-                <div class="screenshot-container">
-                    <img src="home.png" alt="Home Page">
-                    <div class="screenshot-caption">Home Page</div>
-                </div>
-                <div class="screenshot-container">
-                    <img src="gallery.png" alt="Photo Gallery">
-                    <div class="screenshot-caption">Photo Gallery</div>
-                </div>
-                <div class="screenshot-container">
-                    <img src="about.png" alt="About Page">
-                    <div class="screenshot-caption">About Page</div>
-                </div>
-                <div class="screenshot-container">
-                    <img src="join.png" alt="Join Us Form">
-                    <div class="screenshot-caption">Join Us Form</div>
-                </div>
-            </div>
-                
                 <h4>What I Built</h4>
-                <p>Designed and developed a multi-page website presenting the club's information with clear navigation, photo galleries, and activity details. The site is responsive and works across different devices.</p>
-
+                <p>Designed and developed a multi-page website presenting the club's information with clear navigation,
+                    photo galleries, and activity details. The site is responsive and works across different devices.
+                </p>
                 <h4>Features</h4>
                 <ul>
                     <li>Navigation menu to browse different pages</li>
@@ -880,7 +919,6 @@
                     <li>Responsive design that works on mobile and desktop</li>
                     <li>Contact form for interested students</li>
                 </ul>
-
                 <div class="tech-stack">
                     <span class="tech-badge">HTML</span>
                     <span class="tech-badge">CSS</span>
@@ -890,7 +928,6 @@
             </div>
         </div>
     </section>
-
     <section class="skills-section">
         <div class="container">
             <div class="section-header">
@@ -898,11 +935,11 @@
                 <h2 class="section-title">What I'm Learning</h2>
                 <p class="section-subtitle">Technologies and skills I've developed through coursework and projects</p>
             </div>
-
             <div class="skills-grid">
                 <div class="skill-card">
                     <h4>Frontend Development</h4>
-                    <p>Building responsive user interfaces with HTML, CSS, and JavaScript. Creating websites that work across different devices.</p>
+                    <p>Building responsive user interfaces with HTML, CSS, and JavaScript. Creating websites that work
+                        across different devices.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">HTML</span>
                         <span class="skill-tag">CSS</span>
@@ -911,26 +948,25 @@
                         <span class="skill-tag">Jinja2</span>
                     </div>
                 </div>
-
                 <div class="skill-card">
                     <h4>Backend Development</h4>
-                    <p>Working with Python Flask to build server-side applications and implement user authentication systems.</p>
+                    <p>Working with Python Flask to build server-side applications and implement user authentication
+                        systems.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">Flask</span>
                         <span class="skill-tag">WTForms</span>
                     </div>
                 </div>
-
                 <div class="skill-card">
                     <h4>Database</h4>
-                    <p>Learning to work with databases, write SQL queries, and manage data relationships using SQLite.</p>
+                    <p>Learning to work with databases, write SQL queries, and manage data relationships using SQLite.
+                    </p>
                     <div class="skill-tags">
                         <span class="skill-tag">SQLite</span>
                         <span class="skill-tag">SQL</span>
                     </div>
                 </div>
-
                 <div class="skill-card">
                     <h4>Tools</h4>
                     <p>Using version control and development tools for coding and collaboration.</p>
@@ -943,7 +979,6 @@
             </div>
         </div>
     </section>
-
     <section id="contact">
         <div class="container">
             <div class="section-header">
@@ -951,7 +986,6 @@
                 <h2 class="section-title">Get In Touch</h2>
                 <p class="section-subtitle">Feel free to contact me</p>
             </div>
-
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-label">Email</div>
@@ -959,21 +993,18 @@
                         <a href="mailto:ngjiamin0904@gmail.com">ngjiamin0904@gmail.com</a>
                     </div>
                 </div>
-
                 <div class="contact-card">
                     <div class="contact-label">Phone</div>
                     <div class="contact-value">
                         <a href="tel:+6597948355">(+65) 9794 8355</a>
                     </div>
                 </div>
-
                 <div class="contact-card">
                     <div class="contact-label">LinkedIn</div>
                     <div class="contact-value">
                         <a href="https://linkedin.com/in/jia-min-ng-913b813b0" target="_blank">View Profile</a>
                     </div>
                 </div>
-
                 <div class="contact-card">
                     <div class="contact-label">Resume</div>
                     <div class="contact-value">
@@ -983,14 +1014,19 @@
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <p>© 2026 Ng Jia Min • Built as part of learning web development at Nanyang Polytechnic</p>
         </div>
     </footer>
 
-<script>
+    <!-- LIGHTBOX HTML -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">✕</span>
+        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1011,6 +1047,21 @@
             wrapper.classList.toggle('open');
             toggle.classList.toggle('open');
         }
+        // Lightbox functions
+        function openLightbox(src, alt) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-img').alt = alt;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
+
 </html>
