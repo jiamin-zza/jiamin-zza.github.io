@@ -1007,9 +1007,11 @@
 
         // Toggle code snippet visibility
         function toggleCode(header) {
-            const wrapper.classList.toggle('open');
-            toggle.classList.toggle('open');
-        }
+    const wrapper = header.nextElementSibling;
+    const toggle = header.querySelector('.code-toggle');
+    wrapper.classList.toggle('open');
+    toggle.classList.toggle('open');
+}
     </script>
 </body>
 </html>
